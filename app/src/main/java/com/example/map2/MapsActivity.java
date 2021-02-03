@@ -14,7 +14,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
-        GoogleMap.OnMapClickListener {
+        GoogleMap.OnInfoWindowClickListener{
+        // GoogleMap.OnMapClickListener {
 
     private GoogleMap mMap;
     private Marker marker;
@@ -39,22 +40,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         marker = mMap.addMarker(new MarkerOptions()
                 .position(m1)
                 .draggable(true)
-                .title("marker 1")
+                .title("My location")
+              //  .snippet("Lat: 20 Lng: 40")
+                .snippet("Lat")
         );
 
-        mMap.setOnMapClickListener(this);
+        mMap.setOnInfoWindowClickListener(this);
 
-
-      //  mMap.addMarker(new MarkerOptions().position(m1).title("Welcome here"));
+        //  mMap.addMarker(new MarkerOptions().position(m1).title("Welcome here"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(m1));
     }
-
     @Override
-    public void onMapClick(LatLng latLng) {
-        //When map is clicked
-        Toast.makeText(this, "Map is clicked", Toast.LENGTH_LONG).show();
+    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(this, "Infor window is clicked",
+                Toast.LENGTH_LONG).show();
 
     }
+
+//    @Override
+//    public void onMapClick(LatLng latLng) {
+//        //When map is clicked
+//        Toast.makeText(this, "Map is clicked", Toast.LENGTH_LONG).show();
+//
+//    }
+
+
 
 //    @Override
 //    public void onMarkerDragStart(Marker marker) {
