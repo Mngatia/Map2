@@ -12,9 +12,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
-        GoogleMap.OnInfoWindowClickListener{
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
+      //  GoogleMap.OnInfoWindowClickListener{
         // GoogleMap.OnMapClickListener {
 
     private GoogleMap mMap;
@@ -35,7 +37,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng m1 = new LatLng(20,  40);
+        LatLng m1 = new LatLng(20 , 40);
+        LatLng m2 = new LatLng(25 , 45);
+        LatLng m3 = new LatLng(30 , 50);
+        LatLng m4 = new LatLng(45 , 55);
+        LatLng m5 = new LatLng(60 , 90);
 
         marker = mMap.addMarker(new MarkerOptions()
                 .position(m1)
@@ -44,18 +50,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
               //  .snippet("Lat: 20 Lng: 40")
                 .snippet("Lat")
         );
+        //Polyline
+        PolylineOptions recOption = new PolylineOptions()
+                .add(m1)
+                .add(m2)
+                .add(m3)
+                .add(m4)
+                .add(m5);
 
-        mMap.setOnInfoWindowClickListener(this);
+        Polyline polyline = mMap.addPolyline(recOption);
 
-        //  mMap.addMarker(new MarkerOptions().position(m1).title("Welcome here"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(m1));
     }
-    @Override
-    public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(this, "Infor window is clicked",
-                Toast.LENGTH_LONG).show();
+        //mMap.setOnInfoWindowClickListener(this);
 
+        //  mMap.addMarker(new MarkerOptions().position(m1).title("Welcome here"));
+       // mMap.moveCamera(CameraUpdateFactory.newLatLng(m1));
     }
+//    @Override
+//    public void onInfoWindowClick(Marker marker) {
+//        Toast.makeText(this, "Info window is clicked",
+//                Toast.LENGTH_LONG).show();
+//
+//    }
 
 //    @Override
 //    public void onMapClick(LatLng latLng) {
@@ -93,4 +110,3 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     //      return false;
    // }
-}
