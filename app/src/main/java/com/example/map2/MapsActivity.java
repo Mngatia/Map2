@@ -56,7 +56,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .add(m2)
                 .add(m3)
                 .add(m4)
-                .add(m5);
+                .add(m5)
+                .color(R.color.design_default_color_primary_dark)
+                .width(10)
+                ;
 
         Polyline polyline = mMap.addPolyline(recOption);
 
